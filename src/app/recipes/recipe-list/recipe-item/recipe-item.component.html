@@ -1,0 +1,9 @@
+<a href="#" class="list-group-item clearfix mb-4" (click)="selectedRecipe()" >
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+        <p class="list-group-item-text">{{recipe.desc}}</p>
+    </div>
+    <span class="pull-right">
+        <img src="{{recipe.imgUrl}}" alt="recipe-img" class="img-responsive" style="max-height: 50px;">
+    </span>
+</a>
