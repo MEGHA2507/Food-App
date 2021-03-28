@@ -32,6 +32,10 @@ export class RecipeService{
         // which is exact copy of the recipe in the service file. 
     }
 
+    getRecipe(index: number){
+        return this.recipes[index];
+    }
+
     addToShoppingList(ingredient: Ingredients[]){
         this.shoppingService.addshoppingIngredients(ingredient);
     }

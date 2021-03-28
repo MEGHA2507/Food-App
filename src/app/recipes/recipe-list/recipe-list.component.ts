@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
@@ -18,7 +19,7 @@ export class RecipeListComponent implements OnInit {
   //   new Recipe('Recipe 2', 'A New Recipe', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4h5QHFEW1s-QkvkDloZE0Ib-ffDHa9Gdwog&usqp=CAU'),
   //   new Recipe('Recipe 3', 'A New Recipe', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4h5QHFEW1s-QkvkDloZE0Ib-ffDHa9Gdwog&usqp=CAU'),
   // ];
-  constructor(private recipeService: RecipeService) { 
+  constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) { 
     
   }
 
@@ -29,6 +30,10 @@ export class RecipeListComponent implements OnInit {
   onRecipeSelect(recipe: Recipe){
     // console.log(recipe);
     // this.recipeItemSelected.emit(recipe);
+  }
+
+  OnRecipeClick(){
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
 }

@@ -1,8 +1,8 @@
-<app-header (selectTab)="onNavigate($event)"></app-header>
+<app-header></app-header>
 <div class="container">
-    <div class="row">
-        <h1>Food Shop App</h1>
-        <app-recipes *ngIf="loadedFeature === 'Recipes'"></app-recipes>
-        <app-shopping-list *ngIf="loadedFeature === 'Shopping List'"></app-shopping-list>   
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
     </div>
+  </div>
 </div>
