@@ -15,7 +15,6 @@ export class RecipeEditComponent implements OnInit{
   id: number;
   editMode = false;
   recipeEditForm : FormGroup;
-  subscription: Subscription;
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService, 
     private router: Router) { }
@@ -74,7 +73,6 @@ export class RecipeEditComponent implements OnInit{
 
 
     if(this.editMode){
-      console.log(this.recipeEditForm.value);
       this.recipeService.updatedRecipe(this.id, newRecipe);
     }else{
       this.recipeService.addRecipe(newRecipe);
@@ -99,9 +97,5 @@ export class RecipeEditComponent implements OnInit{
     (<FormArray>this.recipeEditForm.get('ingredient')).removeAt(index);
     // (<FormArray>this.recipeEditForm.get('ingredients')).clear();
   }
-
-  // ngOnDestroy(){
-  //   this.subscription.unsubscribe();
-  // }
 
 }
