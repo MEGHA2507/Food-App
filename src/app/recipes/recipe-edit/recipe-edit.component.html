@@ -1,1 +1,62 @@
-<p>recipe-edit works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <form [formGroup]="recipeEditForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <button class="btn btn-success mr-2" [disabled]="!recipeEditForm.valid">Save</button>
+                <button class="btn btn-danger" (click)="onCancel()">Cancel</button>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" formControlName="name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="imgPath">Image URL</label>
+                        <input type="text" class="form-control" id="imgPath" formControlName="imgUrl" #imgPath>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <img [src]="imgPath.value" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea type="text" class="form-control" id="description" row="6" formControlName="desc"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row" formArrayName="ingredient" *ngFor="let ingredients of recipeIngredientArray.controls;let i=index;">
+                <div class="col-sm-12" formGroupName="{{i}}" style="margin-top: 10px;">
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="name" formControlName="name">
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" id="amount" formControlName="amount">
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-danger" type="button" (click)="onIngredientDelete(i)">X</button>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button class=" btn btn-primary" type="button" (click)="onAddIngredients()" style="margin-top: 20px;">Add Ingredients</button>
+                </div>
+            </div>
+
+        </form>
+       
+    </div>
+</div>
