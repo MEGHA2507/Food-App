@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Output() selectTab = new EventEmitter<string>();
   
-  constructor() { }
+  constructor(
+    private dataStorageService: DataStorageService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -23,5 +26,13 @@ export class HeaderComponent implements OnInit {
     //   console.log('Shopping List was clicked');
     //   this.selectTab.emit(tab.target.textContent);
     // }
+  }
+
+  onSave(){
+    this.dataStorageService.storeRecipes();
+  }
+
+  onFetch(){
+    this.dataStorageService.fetchRecipe().subscribe();
   }
 }

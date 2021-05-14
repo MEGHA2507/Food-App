@@ -8,20 +8,22 @@ import { Recipe } from './recipe.model';
 export class RecipeService{
     recipeChanged = new Subject<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe('Recipe 1',
-         'A New Recipe', 
-         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4h5QHFEW1s-QkvkDloZE0Ib-ffDHa9Gdwog&usqp=CAU',
-         [ new Ingredients('Meat', 1), new Ingredients('Cheese', 2)]),
-        new Recipe('Recipe 2',
-         'A New Recipe',
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4h5QHFEW1s-QkvkDloZE0Ib-ffDHa9Gdwog&usqp=CAU',
-          [ new Ingredients('Fish', 1), new Ingredients('Sauce', 2)]),
-        new Recipe('Recipe 3',
-         'A New Recipe',
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4h5QHFEW1s-QkvkDloZE0Ib-ffDHa9Gdwog&usqp=CAU',
-          [ new Ingredients('Pasta', 1), new Ingredients('mayonese', 2)]),
-    ];
+    // private recipes: Recipe[] = [
+    //     new Recipe('Recipe 1',
+    //      'A New Recipe', 
+    //      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4h5QHFEW1s-QkvkDloZE0Ib-ffDHa9Gdwog&usqp=CAU',
+    //      [ new Ingredients('Meat', 1), new Ingredients('Cheese', 2)]),
+    //     new Recipe('Recipe 2',
+    //      'A New Recipe',
+    //       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4h5QHFEW1s-QkvkDloZE0Ib-ffDHa9Gdwog&usqp=CAU',
+    //       [ new Ingredients('Fish', 1), new Ingredients('Sauce', 2)]),
+    //     new Recipe('Recipe 3',
+    //      'A New Recipe',
+    //       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4h5QHFEW1s-QkvkDloZE0Ib-ffDHa9Gdwog&usqp=CAU',
+    //       [ new Ingredients('Pasta', 1), new Ingredients('mayonese', 2)]),
+    // ];
+
+    private recipes: Recipe[] = [];
 
 
     constructor(private shoppingService: shoppingListService){}
@@ -52,6 +54,11 @@ export class RecipeService{
 
     deleteRecipe(index:number){
         this.recipes.splice(index,1);
+        this.recipeChanged.next(this.recipes.slice());
+    }
+
+    setRecipes(recipe:Recipe[]){
+        this.recipes = recipe;
         this.recipeChanged.next(this.recipes.slice());
     }
 
