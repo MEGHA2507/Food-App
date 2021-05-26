@@ -18,6 +18,8 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './recipes/recipe.service';
 import { RecipesResolverService } from './recipes/recipe-resolver.service';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { RecipesResolverService } from './recipes/recipe-resolver.service';
     ShoppingListEditComponent,
     DropdownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
