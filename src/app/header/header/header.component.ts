@@ -1,4 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
@@ -8,12 +10,19 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() selectTab = new EventEmitter<string>();
+  userSubscription : Subscription;
+  isAuthenticated = false;
   
   constructor(
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.userSubscription = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !user ? false: true;
+      // this.isAuthenticated = !!user;
+    });
   }
 
   selectedTab(tab: any){
@@ -34,5 +43,9 @@ export class HeaderComponent implements OnInit {
 
   onFetch(){
     this.dataStorageService.fetchRecipe().subscribe();
+  }
+
+  ngOnDestroy(){
+    this.userSubscription.unsubscribe();
   }
 }
