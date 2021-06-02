@@ -6,12 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthComponent } from './auth/auth.component';
-import { RecipesModule } from './recipes/recipes.module';
-import { ShoppingListModule } from './shopping-list/shopping-list.module';
+// import { AuthComponent } from './auth/auth.component';
+// import { RecipesModule } from './recipes/recipes.module';
+// import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { SharedModules } from './shared/shared.module';
 import { CoreModule } from './core.module';
-import { AuthModule } from './auth/auth.module';
+// import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -24,11 +24,11 @@ import { AuthModule } from './auth/auth.module';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RecipesModule,
-    ShoppingListModule,
+    // RecipesModule,
+    // ShoppingListModule,
     SharedModules,
     CoreModule,
-    AuthModule
+    // AuthModule
   ],
   // providers: [shoppingListService, RecipeService, RecipesResolverService, {
   //   provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService,
