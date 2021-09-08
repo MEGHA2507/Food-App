@@ -40,6 +40,13 @@ export class DataStorageService{
         )
     }
 
+    // fetchRecipe(){    
+    //     return this.http.get<Recipe[]>('https://foodbookapp-72031-default-rtdb.firebaseio.com/recipes.json')
+    //     .subscribe((res) =>{
+    //         console.log(res);
+    //     })
+    // }
+
 
 
 }
